@@ -31,7 +31,7 @@ export function StorySection() {
           <div className="bg-card/50 rounded-lg p-6 backdrop-blur-sm">
             <h3 className="text-lg font-semibold text-card-foreground mb-3">Our Journey</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Through every season of life, we've grown stronger together. From late-night conversations to shared
+              Through every season of life, we&apos;ve grown stronger together. From late-night conversations to shared
               dreams, every moment has led us to this beautiful celebration of our love.
             </p>
           </div>
