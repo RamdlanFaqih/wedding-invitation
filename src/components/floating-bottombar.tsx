@@ -9,7 +9,6 @@ export function FloatingBottomBar() {
   const navItems = [
     { id: "invitation", icon: FileText, label: "Invitation" },
     { id: "gift", icon: Gift, label: "Gift" },
-    { id: "gallery", icon: ImageIcon, label: "Gallery" },
     { id: "messages", icon: MessageCircle, label: "Messages" },
   ]
 

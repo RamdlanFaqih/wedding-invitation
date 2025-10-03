@@ -38,22 +38,22 @@ export function CountdownTimer() {
   }, [])
 
   return (
-    <div className="flex justify-center gap-4 my-8">
+    <div className="flex justify-center gap-4">
       <div className="countdown-circle rounded-full w-16 h-16 flex flex-col items-center justify-center">
         <span className="text-lg font-bold text-foreground">{timeLeft.days}</span>
-        <span className="text-xs text-muted-foreground">Days</span>
+        <span className="text-xs text-muted-foreground">Hari</span>
       </div>
       <div className="countdown-circle rounded-full w-16 h-16 flex flex-col items-center justify-center">
         <span className="text-lg font-bold text-foreground">{String(timeLeft.hours).padStart(2, "0")}</span>
-        <span className="text-xs text-muted-foreground">Hr</span>
+        <span className="text-xs text-muted-foreground">Jam</span>
       </div>
       <div className="countdown-circle rounded-full w-16 h-16 flex flex-col items-center justify-center">
         <span className="text-lg font-bold text-foreground">{String(timeLeft.minutes).padStart(2, "0")}</span>
-        <span className="text-xs text-muted-foreground">Min</span>
+        <span className="text-xs text-muted-foreground">Menit</span>
       </div>
       <div className="countdown-circle rounded-full w-16 h-16 flex flex-col items-center justify-center">
         <span className="text-lg font-bold text-foreground">{String(timeLeft.seconds).padStart(2, "0")}</span>
-        <span className="text-xs text-muted-foreground">Sec</span>
+        <span className="text-xs text-muted-foreground">Detik</span>
       </div>
     </div>
   )
