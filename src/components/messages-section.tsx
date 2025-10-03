@@ -31,7 +31,7 @@ export function MessagesSection() {
               <h3 className="text-lg font-semibold text-card-foreground">WhatsApp Message</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-              Send us your congratulations and well wishes directly through WhatsApp. We'd love to hear from you!
+              Send us your congratulations and well wishes directly through WhatsApp. We&apos;d love to hear from you!
             </p>
             <button
               onClick={sendWhatsAppMessage}
@@ -48,17 +48,17 @@ export function MessagesSection() {
             <div className="space-y-3 text-left">
               <div className="bg-background/50 rounded p-3">
                 <p className="text-sm text-foreground italic">
-                  "Congratulations on your wedding! Wishing you both a lifetime of love and happiness."
+                  &quot;Congratulations on your wedding! Wishing you both a lifetime of love and happiness.&quot;
                 </p>
               </div>
               <div className="bg-background/50 rounded p-3">
                 <p className="text-sm text-foreground italic">
-                  "May your marriage be filled with endless joy, laughter, and beautiful memories."
+                  &quot;May your marriage be filled with endless joy, laughter, and beautiful memories.&quot;
                 </p>
               </div>
               <div className="bg-background/50 rounded p-3">
                 <p className="text-sm text-foreground italic">
-                  "So happy to celebrate this special day with you. Best wishes for your future together!"
+                  &quot;So happy to celebrate this special day with you. Best wishes for your future together!&quot;
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@ export function MessagesSection() {
           {/* Contact Info */}
           <div className="bg-card/30 rounded-lg p-4 backdrop-blur-sm">
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Can't make it to the ceremony? Your messages and prayers are just as meaningful to us.
+              Can&apos;t make it to the ceremony? Your messages and prayers are just as meaningful to us.
             </p>
           </div>
         </div>
