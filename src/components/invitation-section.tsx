@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { useSearchParams } from "next/navigation"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { FloatingBottomBar } from "@/components/floating-bottombar"
@@ -9,6 +10,14 @@ import { GiftSection } from "@/components/gift-section"
 import { LocationSection } from "@/components/location-section"
 import { MessagesSection } from "@/components/messages-section"
 import { useNavigationStore } from "@/store/navigation-store"
+
+/*
+  Improved mobile-first InvitationSection.
+  - Keeps fonts & colors untouched (uses existing utility classes)
+  - No extra dependencies
+  - Keeps layout intentionally 'mobile only' by constraining widths and using mobile-friendly spacing
+  - Small accessibility improvements (aria, semantic tags)
+*/
 
 function DecorativeBackground() {
   return (
@@ -42,6 +51,18 @@ function DecorativeBackground() {
   )
 }
 
+function InvitationCard({ children }: { children: React.ReactNode }) {
+  return (
+    <article
+      className="w-full max-w-xs mx-auto bg-background/80 backdrop-blur-sm rounded-3xl shadow-[0_10px_30px_rgba(2,6,23,0.35)] overflow-hidden border border-muted-foreground/6"
+      role="region"
+      aria-label="Wedding invitation card"
+    >
+      {children}
+    </article>
+  )
+}
+
 function InvitationSection() {
   const searchParams = useSearchParams()
   const toParam = searchParams?.get("to")
@@ -51,61 +72,70 @@ function InvitationSection() {
   const recipientParts = rawRecipient.split(/(\s*&\s*)/)
 
   return (
-    <div className="min-h-screen flex justify-center py-12 px-4">
-      <div className="relative w-full max-w-md bg-background/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
+    <section className="min-h-screen flex items-start justify-center py-10 px-4">
+      <div className="relative w-full">
         <DecorativeBackground />
 
-        {/* Main content */}
-        <div className="px-8 py-10 text-center relative z-10">
-          {/* Header */}
-          <div className="mb-6">
+        <InvitationCard>
+          {/* Top accent bar */}
+          <div className="px-6 pt-6 text-center relative z-10">
             <p className="text-xs tracking-widest text-muted-foreground mb-2">WEDDING INVITATION</p>
-            <div className="mx-auto w-28 h-[1px] bg-muted-foreground/25 rounded" />
+            <div className="mx-auto w-20 h-[1px] bg-muted-foreground/25 rounded mb-4" />
+
+            {/* Couple names */}
+            <div className="mb-4">
+              <h1 className="font-script text-3xl text-foreground leading-none">Susi Samsiah</h1>
+              <p className="text-lg text-muted-foreground my-0.5">&</p>
+              <h1 className="font-script text-3xl text-foreground leading-none">Abdul Munir</h1>
+            </div>
+
+            {/* Date badge */}
+            <div className="mb-4">
+              <p className="text-sm text-foreground mb-1">Saturday</p>
+              <p className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-card/40 tracking-wider shadow-inner">25 • 10 • 2025</p>
+            </div>
           </div>
 
-          {/* Couple names */}
-          <div className="mb-6">
-            <h1 className="font-script text-4xl sm:text-5xl text-foreground leading-none">Susi Samsiah</h1>
-            <p className="text-xl text-muted-foreground my-1">&</p>
-            <h1 className="font-script text-4xl sm:text-5xl text-foreground leading-none">Abdul Munir</h1>
-          </div>
-
-          {/* Date */}
-          <div className="mb-6">
-            <p className="text-sm text-foreground mb-1">Saturday</p>
-            <p className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-card/40 tracking-wider shadow-inner">25 • 10 • 2025</p>
-          </div>
-
-          {/* Countdown */}
-          <div className="mb-8">
-            <div className="inline-block w-full rounded-xl p-4 bg-gradient-to-b from-white/10 to-transparent border border-muted-foreground/8 shadow-sm">
+          {/* Countdown - elevated */}
+          <div className="px-4 pb-4">
+            <div className="w-full rounded-xl p-3 bg-gradient-to-b from-white/6 to-transparent border border-muted-foreground/8 shadow-sm">
               <CountdownTimer />
             </div>
           </div>
 
-          {/* Recipient */}
-          <div className="mt-6 text-center">
-            <div className="bg-primary/6 border border-primary/10 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font">Mengundang</p>
-              {recipientParts.map((part, i) => {
-                const trimmed = part.trim()
-                if (!trimmed) return null
+          {/* Recipient box with subtle motion */}
+          <div className="px-5 pb-8">
+            <div
+              className="bg-primary/6 border border-primary/10 rounded-2xl p-5 shadow-xl backdrop-blur-sm transform-gpu transition-transform duration-300 hover:-translate-y-1"
+              aria-live="polite"
+            >
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 text-center">Mengundang</p>
 
-                // ensure ampersand is rendered as its own (smaller) line
-                if (trimmed === "&") {
+              <div className="flex flex-col items-center justify-center">
+                {recipientParts.map((part, i) => {
+                  const trimmed = part.trim()
+                  if (!trimmed) return null
+
+                  // ensure ampersand is rendered as its own (smaller) line
+                  if (trimmed === "&") {
+                    return (
+                      <p key={i} className="text-2xl text-primary font-semibold leading-tight">{trimmed}</p>
+                    )
+                  }
+
                   return (
-                    <p key={i} className="text-2xl text-primary font-semibold leading-tight my-1">{trimmed}</p>
+                    <p key={i} className="text-2xl text-center text-foreground leading-tight break-words">{trimmed}</p>
                   )
-                }
-                return (
-                  <p key={i} className="text-3xl sm:text-4xl text-foreground leading-tight my-1">{trimmed}</p>
-                )
-              })}
+                })}
+              </div>
+
+              {/* address below recipient - replace the placeholder with the real address */}
+              <p className="mt-4 text-sm text-muted-foreground text-center">Gedung Serbaguna • Jl. Mawar No. 12 • Jakarta</p>
             </div>
           </div>
-        </div>
+        </InvitationCard>
       </div>
-    </div>
+    </section>
   )
 }
 
