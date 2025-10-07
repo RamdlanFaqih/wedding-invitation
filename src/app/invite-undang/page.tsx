@@ -1,33 +1,75 @@
-// app/invite/page.tsx
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import React, { useState } from "react"
 
 export default function InvitePage() {
-  const router = useRouter()
   const [name, setName] = useState("")
   const [copied, setCopied] = useState(false)
 
+  const copyToClipboard = async (text: string) => {
+    // primary: navigator.clipboard (https secure)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text)
+      return
+    }
+
+    // fallback: create textarea, select, execCommand
+    const ta = document.createElement("textarea")
+    ta.value = text
+    // place off-screen
+    ta.style.position = "fixed"
+    ta.style.left = "-9999px"
+    document.body.appendChild(ta)
+    ta.select()
+    try {
+      document.execCommand("copy")
+    } finally {
+      document.body.removeChild(ta)
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name.trim()) return
+    const trimmed = name.trim()
+    if (!trimmed) return
 
-    const encoded = encodeURIComponent(name.trim())
+    const encoded = encodeURIComponent(trimmed)
     const url = `${window.location.origin}/?to=${encoded}`
 
-    // navigasi ke link undangan
-    router.push(`/?to=${encoded}`)
+    // buat isi undangan sesuai format yang diminta
+    const invitationText = `Kepada Yth.
+Bapak/Ibu/Saudara/i
+${trimmed}
+___________________
 
-    // salin ke clipboard
+Assalamualaikum Warahmatullahi Wabarakatuh
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami.
+
+Berikut link undangan kami, untuk info lengkap dari acara, bisa kunjungi :
+
+${url}
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
+
+Wassalamualaikum Warahmatullahi Wabarakatuh
+
+Terima Kasih
+
+Hormat kami,
+Susi & Abdul
+`
+
     try {
-      await navigator.clipboard.writeText(url)
+      await copyToClipboard(invitationText)
       setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch {
-      // kalau gagal salin, tetap navigasi dan beri info
+      // beri waktu notifikasi visible (opsional)
+      setTimeout(() => setCopied(false), 3000)
+    } catch (err) {
+      // kalau gagal menyalin, tetap navigasi dan beri info
       setCopied(false)
-      alert("Link dibuat: " + url)
+      alert("Gagal menyalin otomatis. Link dibuat: " + url)
+      window.location.href = url
     }
   }
 
@@ -65,7 +107,7 @@ export default function InvitePage() {
             </button>
           </div>
 
-          {copied && <p className="text-sm text-emerald-600">Link disalin ke clipboard ✅</p>}
+          {copied && <p className="text-sm text-emerald-600">Isi undangan disalin ke clipboard ✅</p>}
 
           <p className="text-xs text-muted-foreground">
             Catatan: siapa pun yang memiliki link ini bisa membuka undangan tersebut.
