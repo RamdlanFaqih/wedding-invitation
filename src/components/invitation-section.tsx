@@ -70,6 +70,7 @@ function InvitationSection() {
 
   // split but keep ampersand as its own item so it renders on a new line
   const recipientParts = rawRecipient.split(/(\s*&\s*)/)
+  const addressText = "Dusun Winangun Blok Cipeteuy • RT/RW 35/10 • Desa Dayeuhluhur Kec. Jatinagara"
 
   return (
     <section className="min-h-screen flex items-start justify-center py-10 px-4">
@@ -128,9 +129,16 @@ function InvitationSection() {
                   )
                 })}
               </div>
-
-              {/* address below recipient - replace the placeholder with the real address */}
-              <p className="mt-4 text-sm text-muted-foreground text-center">Gedung Serbaguna • Jl. Mawar No. 12 • Jakarta</p>
+            </div>
+          </div>
+          <div className="px-5 pb-16">
+            <div
+              className="bg-card/20 border border-muted-foreground/8 rounded-2xl p-4 shadow-sm backdrop-blur-sm"
+              role="contentinfo"
+              aria-label="Alamat acara"
+            >
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 text-center">Alamat</p>
+              <p className="text-xs text-muted-foreground text-center font-semibold">{addressText}</p>
             </div>
           </div>
         </InvitationCard>
