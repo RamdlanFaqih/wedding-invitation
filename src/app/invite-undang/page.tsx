@@ -79,7 +79,7 @@ Susi & Abdul
         <h2 className="text-2xl font-semibold mb-4">Buat Link Undangan</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <label className="block text-sm">
-            Nama penerima (contoh: Faqih dan Pasangan)
+            Nama penerima (contoh: Faqih & Pasangan)
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
