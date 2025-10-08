@@ -37,7 +37,7 @@ export function GiftSection() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Atas Nama</p>
-                <p className="font-medium text-foreground">Ajeng Sari Dewi</p>
+                <p className="font-medium text-foreground">Susi Samsiah</p>
               </div>
             </div>
           </div>
