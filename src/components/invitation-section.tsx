@@ -83,11 +83,37 @@ function InvitationSection() {
             <p className="text-xs tracking-widest text-muted-foreground mb-2">WEDDING INVITATION</p>
             <div className="mx-auto w-20 h-[1px] bg-muted-foreground/25 rounded mb-4" />
 
-            {/* Couple names */}
+            {/* Couple names - improved layout */}
             <div className="mb-4">
-              <h1 className="font-script text-3xl text-foreground leading-none">Susi Samsiah</h1>
-              <p className="text-lg text-muted-foreground my-0.5">&</p>
-              <h1 className="font-script text-3xl text-foreground leading-none">Abdul Munir</h1>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                {/* Left name block */}
+                <div className="flex-1 text-center px-2">
+                  <h1 className="font-script text-4xl sm:text-5xl text-foreground leading-none tracking-tight">Susi Samsiah</h1>
+                  <p className="text-xs text-muted-foreground mt-2 leading-snug">
+                    <span className="block">Putri kedua dari</span>
+                    <span className="block mt-1 text-[11px] italic font-medium">Bapak Maman & Ibu Oom</span>
+                  </p>
+                </div>
+
+                {/* Ampersand: large on sm+, centered on mobile */}
+                <div className="mx-2">
+                  <span className="hidden sm:inline-block text-2xl text-muted-foreground font-semibold leading-none">&</span>
+                </div>
+
+                {/* Right name block */}
+                <div className="flex-1 text-center px-2">
+                  <h1 className="font-script text-4xl sm:text-5xl text-foreground leading-none tracking-tight">Abdul Munir</h1>
+                  <p className="text-xs text-muted-foreground mt-2 leading-snug">
+                    <span className="block">Putra kedua dari</span>
+                    <span className="block mt-1 text-[11px] italic font-medium">Bapak Uned Junaedi & Ibu Encih</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* ampersand for mobile (centered under the two stacked names) */}
+              <div className="sm:hidden mt-2">
+                <p className="text-lg text-muted-foreground text-center font-semibold">&</p>
+              </div>
             </div>
 
             {/* Date badge */}
