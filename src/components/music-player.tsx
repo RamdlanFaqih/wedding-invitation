@@ -146,10 +146,6 @@ export default function MusicPlayer({
               Buka Undangan
               <span className="text-sm opacity-80">▶</span>
             </button>
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              (Musik akan diputar setelah membuka undangan)
-            </p>
           </div>
         </div>
       )}
