@@ -100,8 +100,14 @@ function InvitationSection() {
 
             {/* Date badge */}
             <div className="mb-4">
-              <p className="text-sm text-foreground mb-1">Saturday</p>
+              <p className="text-sm text-foreground mb-1">Sabtu</p>
               <p className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-card/40 tracking-wider shadow-inner">25 • 10 • 2025</p>
+            </div>
+
+            {/* Akad Nikah time (added) */}
+            <div className="mb-4" aria-label="Waktu akad nikah">
+              <p className="text-xs text-muted-foreground mb-1">Akad Nikah</p>
+              <p className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-card/40 tracking-wider shadow-inner">09.00 WIB</p>
             </div>
           </div>
 
