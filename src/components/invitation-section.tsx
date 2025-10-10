@@ -93,8 +93,8 @@ function InvitationSection() {
               <p className="text-lg text-muted-foreground my-0.5">&</p>
               <h1 className="font-script text-3xl text-foreground leading-none">Abdul Munir</h1>
               <p className="text-xs text-muted-foreground mt-2 leading-snug">
-                <span className="block">Putri kedua dari</span>
-                <span className="block mt-1 text-[11px] italic font-medium">Bapak Uned Junaedi & Ibu Encih(almh) Nur Hasanah</span>
+                <span className="block">Putra kedua dari</span>
+                <span className="block mt-1 text-[11px] italic font-medium">Bapak Uned Junaedi & Ibu Encih(almh) / Nur Hasanah</span>
               </p>
             </div>
 
