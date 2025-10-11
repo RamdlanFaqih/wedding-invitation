@@ -7,11 +7,10 @@ Designed for fast customization and easy sharing — includes a music player and
 
 📱 Bottom Bar Navigation — Persistent navigation for mobile-friendly access to sections
 
-✉️ Invite-by-name (planned) — let guests type their name and generate a personalized invite
+✉️ Invite-by-name — let guests type their name and generate a personalized invite
 
-🔗 Auto-copy invite link (planned) — one-click copy of a personalized invitation link to clipboard
+🔗 Auto-copy invite link  — one-click copy of a personalized message template with the invite link to clipboard
 
-💬 Share template for WhatsApp (planned) — quick "share to WhatsApp" message template with the invite link
 ## Tech Stack
 
 Next.js (React)
