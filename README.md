@@ -26,11 +26,6 @@ git clone https://github.com/RamdlanFaqih/wedding-invitation.git
 cd wedding-invitation
 ```
 
-
-```bash
-git clone https://github.com/RamdlanFaqih/wedding-invitation.git
-cd wedding-invitation
-```
 Install
 ```
 npm install
