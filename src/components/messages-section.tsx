@@ -7,7 +7,7 @@ import { MessageCircle, Send } from "lucide-react"
 export function MessagesSection() {
   const [customMessage, setCustomMessage] = useState("")
 
-  const phoneNumber = "6285315953644" // Ganti dengan nomor WhatsApp yang sebenarnya
+  const phoneNumber = "6282117634360" // Ganti dengan nomor WhatsApp yang sebenarnya
 
   const sendWhatsAppMessage = () => {
     // Template dasar doa islami
