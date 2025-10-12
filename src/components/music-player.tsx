@@ -4,7 +4,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 type Props = {
-  src?: string; // contoh: "/music.mp3"
+  src?: string;
   loop?: boolean;
 };
 
@@ -37,7 +37,6 @@ export default function MusicPlayer({
     a.preload = "auto";
     audioRef.current = a;
 
-    // event listeners untuk keep-in-sync
     const onPlay = () => {
       playingRef.current = true;
       setIsPlaying(true);
@@ -55,7 +54,6 @@ export default function MusicPlayer({
     a.addEventListener("pause", onPause);
     a.addEventListener("volumechange", onVolumeChange);
 
-    // expose API yang membaca audioRef langsung / ref untuk menghindari stale closure
     window.__musicPlayer = {
       togglePlay: async () => {
         const audio = audioRef.current;
@@ -63,7 +61,6 @@ export default function MusicPlayer({
         if (!playingRef.current) {
           try {
             await audio.play();
-            // event 'play' akan meng-handle state, tapi set juga untuk safety
             playingRef.current = true;
             setIsPlaying(true);
           } catch (err) {
@@ -71,7 +68,6 @@ export default function MusicPlayer({
           }
           return;
         }
-        // kalau sedang playing -> pause
         audio.pause();
         playingRef.current = false;
         setIsPlaying(false);
@@ -84,7 +80,6 @@ export default function MusicPlayer({
         setIsMuted(audio.muted);
       },
       isPlaying: () => {
-        // prefer reading actual audio state if ada
         const audio = audioRef.current;
         if (audio) return !audio.paused && !audio.ended;
         return playingRef.current;
@@ -108,7 +103,6 @@ export default function MusicPlayer({
         delete window.__musicPlayer;
       } catch {}
     };
-    // hanya sekali saat mount (src/loop tidak perlu meng-recreate API pada runtime normal)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
