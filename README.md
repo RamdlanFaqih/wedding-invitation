@@ -5,10 +5,6 @@ Designed for fast customization and easy sharing — includes a music player and
 
 🎵 Music Player — Autoplay / play-pause controls for background music
 
-📱 Bottom Bar Navigation — Persistent navigation for mobile-friendly access to sections
-
-✉️ Invite-by-name — let guests type their name and generate a personalized invite
-
 🔗 Auto-copy invite link  — one-click copy of a personalized message template with the invite link to clipboard
 
 ## Tech Stack
