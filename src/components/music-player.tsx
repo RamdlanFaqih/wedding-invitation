@@ -106,7 +106,6 @@ export default function MusicPlayer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // buka undangan (splash) lalu play
   const openInvitationAndPlay = async () => {
     setIsOpen(true);
     try {

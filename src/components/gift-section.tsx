@@ -41,6 +41,26 @@ export function GiftSection() {
               </div>
             </div>
           </div>
+          <div className="bg-card/50 rounded-lg p-6 backdrop-blur-sm">
+            <div className="flex items-center justify-center mb-4">
+              <Smartphone className="text-accent mr-2" size={24} />
+              <h3 className="text-lg font-semibold text-card-foreground">Dana</h3>
+            </div>
+            <div className="space-y-3">
+              <div>
+                <div className="flex items-center justify-between bg-background/50 rounded p-2 border-2">
+                  <span className="font-mono text-foreground">+62 823-1152-4654</span>
+                  <button onClick={() => copyToClipboard("+6281234567890")} className="p-1 hover:bg-accent/20 rounded">
+                    <Copy size={16} className="text-muted-foreground" />
+                  </button>
+                </div>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Atas Nama</p>
+                <p className="font-medium text-foreground">Abdul Munir</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 bg-card/30 rounded-lg p-4 backdrop-blur-sm">
